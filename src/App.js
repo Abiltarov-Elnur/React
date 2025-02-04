@@ -1,13 +1,12 @@
 import React from 'react';
 
 function App() {
-	return <div>
-    <p id='sn'>Abiltarov Elnur</p>
-    <p id='fn'>Serverovich</p>
-    
-	</div>;
-
-
+	return(
+		<ul>
+			<li>text1</li>
+			<li>text2</li>
+			<li>text3</li>
+		</ul>);
 }
 
 export default App;
