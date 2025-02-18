@@ -1,17 +1,15 @@
 import React from 'react';
 
 function App() {
-	function show1() {
-		alert(1);
+
+	function me(text){
+		alert(text);
 	}
-	
-	function show2() {
-		alert(2);
-	}
-	
+
 	return <div>
-		<button onClick={show1}>act1</button>
-		<button onClick={show2}>act2</button>
+		<button onClick={() => me('number 1')}>act1</button>
+		<button onClick={() => me('number 2')}>act2</button>
+		<button onClick={() => me('number 3')}>act3</button>
 	</div>;
 }
 
