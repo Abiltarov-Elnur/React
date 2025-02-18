@@ -1,25 +1,18 @@
 import React from 'react';
 
 function App() {
-	function getDigitsSum(num){
-		if (typeof num === 'number'){
-			num = num.toString();
-		}
-		var del = num.length;
-
-		var summ = 0;
-		for (let i = 0; i < del; i++){
-			summ += parseInt(num[i], 10);
-		}
-
-		return summ
+	function show1() {
+		alert(1);
 	}
-
-	var sum = getDigitsSum(1233435234987237244)
-
+	
+	function show2() {
+		alert(2);
+	}
+	
 	return <div>
-		{sum}
-	</div>
+		<button onClick={show1}>act1</button>
+		<button onClick={show2}>act2</button>
+	</div>;
 }
 
 export default App;
