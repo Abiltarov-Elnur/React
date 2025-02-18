@@ -1,31 +1,25 @@
 import React from 'react';
 
 function App() {
-	let text;
-	const isAdult = 18
-	const age = 19;
-	const isAuth = true;
+	function getDigitsSum(num){
+		if (typeof num === 'number'){
+			num = num.toString();
+		}
+		var del = num.length;
 
-	if(isAdult > 17){
-		text = <p>text1</p>
-	}else{
-		text = <p>text2</p>
+		var summ = 0;
+		for (let i = 0; i < del; i++){
+			summ += parseInt(num[i], 10);
+		}
+
+		return summ
 	}
 
+	var sum = getDigitsSum(1233435234987237244)
 
- 
-	return (
-	<>
-		<div>
-			{age > 18 ? <p>adult</p> : <p>young</p>}
-		</div>
-
-		<div>
-			{!isAuth && <p>text1</p>}
-		</div>
-	</>
-	);
-
+	return <div>
+		{sum}
+	</div>
 }
 
 export default App;
