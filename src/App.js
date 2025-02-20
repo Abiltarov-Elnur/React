@@ -1,13 +1,12 @@
 import React from 'react';
 
 function App() {
-	const arr = [];
-	for (let i = 0; i <= 9; i++){
-		arr.push(<li>{i}</li>)
-	}
+	const arr = ['a', 'b', 'c', 'd'];
+	const res = arr.map(function(item) { return <li>{item}</li>; });
+
 	
 	return <ul>
-		{arr}
+		{res}
 	</ul>;
 }
 
