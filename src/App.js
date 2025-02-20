@@ -1,15 +1,13 @@
 import React from 'react';
 
 function App() {
-
-	function me(text){
-		alert(text);
+	function func(arg, arg2, event) {
+		console.log(arg, arg2, event);
 	}
-
+	
 	return <div>
-		<button onClick={() => me('number 1')}>act1</button>
-		<button onClick={() => me('number 2')}>act2</button>
-		<button onClick={() => me('number 3')}>act3</button>
+		<button onClick={event => func('eee', 'ggg', 
+			event)}>act</button> 
 	</div>;
 }
 
