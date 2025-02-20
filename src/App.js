@@ -1,13 +1,16 @@
 import React from 'react';
 
 function App() {
-	function func(arg, arg2, event) {
-		console.log(arg, arg2, event);
-	}
+	const arr = [
+		<li>1</li>,
+		<li>2</li>,
+		<li>3</li>,
+		<li>4</li>,
+		<li>5</li>,
+	];
 	
 	return <div>
-		<button onClick={event => func('eee', 'ggg', 
-			event)}>act</button> 
+		{arr}
 	</div>;
 }
 
