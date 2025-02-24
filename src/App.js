@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import uuid from "react-uuid";
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [value1, setValue1] = useState('');
+	const [value, setValue] = useState('');
 	
-	function clickHandler() {
-		setCount(count + 1);
+	function handleChange(event) {
+		setValue(event.target.value);  
 	}
 
-	function clickHandler1() {
-		setCount(count - 1);
+	function handleChange1(event) {
+		setValue1(event.target.value);  
 	}
 	
 	return <div>
-		<span>{count}</span>
-		<button onClick={clickHandler}>+</button>
-		<button onClick={clickHandler1}>-</button>
+		<input value={value} onChange={handleChange} 
+			/> 
+		<input value={value1} onChange={handleChange1} 
+			/> 
+		<p>text: {value}</p>
+		<p>text: {value1}</p>
 	</div>;
 }
 
