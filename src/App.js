@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import uuid from "react-uuid";
 
 function App() {
-	const [name, setName] = useState('Вася');
-	const [surn, setSurn] = useState('Левин');
-	const [age, setAge] = useState('23');
+	const [ban, setBan] = useState(false);
 
 
 	return <div>
-		<span>{name} </span>
-		<span>{surn} </span>
-		<span>{age} </span>
-		<button onClick={() => setName('ИГоооооорь')} and >нажми, тварь!</button>
+		<span> {ban ? 'БАН' : 'РАЗБАН'}</span>
+		<button onClick={() => setBan(true)}>нажми, тварь!</button>
+		<button onClick={() => setBan(false)}>нажми, тварь!</button>
 	</div>;
+
 }
 export default App;
   
