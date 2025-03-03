@@ -2,21 +2,25 @@ import uuid from "react-uuid";
 
 import React, { useState } from 'react';
 
+
 function App() {
-    const [value, setValue] = useState(''); // Состояние для хранения значения инпута
+    const [age, setAge] = useState(0);
 
     function handleChange(event) {
-        setValue(event.target.value); // Обновляем состояние при вводе текста
+        setAge(event.target.value);
     }
+
+    // Получаем текущий год
+    var grs = (age * (9/5)) + 32
 
     return (
         <div>
-            <input
-                type="text"
-                value={value} // Значение инпута привязано к состоянию
-                onChange={handleChange} // Обработчик изменений
+            <input 
+                type="number" 
+                value={age} 
+                onChange={handleChange} 
             />
-            <p>Количество символов: {value.length}</p>
+            <p>Градус: {grs}</p>
         </div>
     );
 }
