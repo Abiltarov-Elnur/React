@@ -4,27 +4,23 @@ import React, { useState } from 'react';
 
 
 function App() {
-	const [checked, setChecked] = useState(true);
-    const [checked1, setChecked1] = useState(true);
-    const [checked2, setChecked2] = useState(true);
+	const [value, setValue] = useState('');
 	
-
-	let mes;
-	if(checked){
-		mes = <p>Ура вам есть 18!</p>
-
-	}else{
-		mes = <p>Пошел вон!</p>
+	function handleChange(event) {
+		setValue(event.target.value);
 	}
-
-
+	
 	return <div>
-        <p>Тебе есть 18?</p>
-		<input type="checkbox" checked={checked} 
-			onChange={() => setChecked(!checked)} /> 
-        <p>{mes}</p>
+		<select value={value} onChange={handleChange}>
+			<option>Moscow</option>
+			<option>Dzankoy</option>
+			<option>Simf</option>
+			<option>Zarechnoyes</option>
+		</select>
+		<p>
+			ваш выбор: {value}
+		</p>
 	</div>;
 }
-
 export default App;
 
