@@ -4,41 +4,35 @@ import React, { useState } from 'react';
 
 
 function App() {
-    const [val1, setNum1] = useState("");
-    const [val2, setNum2] = useState("");
-    const [val3, setNum3] = useState("");
-    const [val4, setNum4] = useState("");
+    const [value, setValue] = useState('');
 
-    function handleChange1(event) {
-        setNum1(+event.target.value);
-    }
-    function handleChange2(event) {
-        setNum2(+event.target.value);
-    }
-    function handleChange3(event) {
-        setNum3(Number(val1) + Number(val2));
-    }
-    function handleChange4(event) {
-        setNum3(Number(val1) * Number(val2));
-    }
+    // Функция для транслитерации текста
+    const transliterate = (text) => {
+        const cyrillicToLatin = {
+            'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo',
+            'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+            'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+            'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch',
+            'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya',
+            'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'Yo',
+            'Ж': 'Zh', 'З': 'Z', 'И': 'I', 'Й': 'Y', 'К': 'K', 'Л': 'L', 'М': 'M',
+            'Н': 'N', 'О': 'O', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U',
+            'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts', 'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch',
+            'Ъ': '', 'Ы': 'Y', 'Ь': '', 'Э': 'E', 'Ю': 'Yu', 'Я': 'Ya'
+        };
 
-    // Получаем текущий год
-    
+        // Преобразуем каждый символ текста
+        return text.split('').map(char => cyrillicToLatin[char] || char).join('');
+    };
+
     return (
         <div>
-            <input 
-                type="number" 
-                value={val1} 
-                onChange={handleChange1} 
+            <textarea 
+                value={value} 
+                onChange={(event) => setValue(event.target.value)} 
+                placeholder="Введите текст на кириллице"
             />
-            <input 
-                type="number" 
-                value={val2} 
-                onChange={handleChange2} 
-            />
-            <button onClick={handleChange3}></button>
-            <button onClick={handleChange4}></button>
-            <p>Res: {val3}{val4}</p>
+            <p>Транслит: {transliterate(value)}</p>
         </div>
     );
 }
