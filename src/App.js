@@ -3,32 +3,26 @@ import uuid from "react-uuid";
 import React, { useState } from "react";
 
 function App() {
-	const [notes, setNotes] = useState([1, 2, 3, 4, 5, 6, 7, 8]); 
+
+	const initObj = {
+		prop1: '01',
+		prop2: '01',
+		prop3: '2025',
+	}
+
+	const [obj, setObj] = useState(initObj);
 	
-	const lengh = notes.length;
-
-
-	function getSum(arr) {
-		return arr.reduce((acc, num) => acc + Number(num), 0); }
-
-
-	function changeHandler(index, event) {
-		setNotes([...notes.slice(0, index), 
-			event.target.value, ...notes.slice(index + 1)]); 
+	function handleChange(prop, event) {
+		setObj({...obj, ...{[prop]: event.target.value}});
 	}
 	
-	const result = notes.map((note, index) => {
-		return <input
-			key={index}
-			value={note}
-			onChange={event => changeHandler(index, event)} 
-		/>;
-	});
-	
 	return <div>
-		{result}
-		{getSum(notes)/lengh}
+		<input value={obj.prop1} onChange={event => handleChange('prop1', event)} /> 
+		<input value={obj.prop2} onChange={event => handleChange('prop2', event)} /> 
+		<input value={obj.prop3} onChange={event => handleChange('prop3', event)} /> 
+		
+		<br />
+		{obj.prop1}-{obj.prop2}-{obj.prop3}
 	</div>;
 }
-
 export default App;
