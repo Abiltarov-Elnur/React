@@ -3,41 +3,32 @@ import uuid from "react-uuid";
 import React, { useState } from "react";
 
 function App() {
-	const [value, setValue] = useState(1);
+	const [notes, setNotes] = useState([1, 2, 3, 4, 5, 6, 7, 8]); 
 	
-	function changeHandler(event) {
-		setValue(event.target.value);
-	}
+	const lengh = notes.length;
 
-	const res = ''
 
-	function changeHandler1(event) {
-		setValue(event.target.value);
-		if (value == 'true'){
-			res = 'cool!'
-		}
+	function getSum(arr) {
+		return arr.reduce((acc, num) => acc + Number(num), 0); }
+
+
+	function changeHandler(index, event) {
+		setNotes([...notes.slice(0, index), 
+			event.target.value, ...notes.slice(index + 1)]); 
 	}
+	
+	const result = notes.map((note, index) => {
+		return <input
+			key={index}
+			value={note}
+			onChange={event => changeHandler(index, event)} 
+		/>;
+	});
 	
 	return <div>
-		<p>HTML {res}</p>
-		<input
-			type="radio"
-			name="radio"
-			value="1"
-			checked={value === '1' ? true 
-				: false} 
-			onChange={changeHandler1}
-		/>
-		<p>CSS</p>
-		<input
-			type="radio"
-			name="radio"
-			value="2"
-			checked={value === '2' ? true 
-				: false} 
-			onChange={changeHandler}
-		/>
-	</div>
+		{result}
+		{getSum(notes)/lengh}
+	</div>;
 }
 
 export default App;
