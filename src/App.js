@@ -3,26 +3,30 @@ import uuid from "react-uuid";
 import React, { useState } from "react";
 
 function App() {
+	const [notes, setNotes] = useState([1, 
+		2, 3, 4, 5]); 
+	
+	const result = notes.map((note, index) => {
+		return <li key={index}>{note}</li>;
+	});
+	
 
-	const initObj = {
-		prop1: '01',
-		prop2: '01',
-		prop3: '2025',
+	function clk(){
+		const newNumber = notes.length + 1; 
+    	setNotes([...notes, newNumber]);
 	}
 
-	const [obj, setObj] = useState(initObj);
-	
-	function handleChange(prop, event) {
-		setObj({...obj, ...{[prop]: event.target.value}});
-	}
-	
+
 	return <div>
-		<input value={obj.prop1} onChange={event => handleChange('prop1', event)} /> 
-		<input value={obj.prop2} onChange={event => handleChange('prop2', event)} /> 
-		<input value={obj.prop3} onChange={event => handleChange('prop3', event)} /> 
-		
-		<br />
-		{obj.prop1}-{obj.prop2}-{obj.prop3}
+		<ul>
+			{result}
+		</ul>
+		<button
+		onClick={clk}
+
+
+		>добавь число</button>
 	</div>;
 }
+
 export default App;
