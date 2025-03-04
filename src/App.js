@@ -1,26 +1,53 @@
 import uuid from "react-uuid";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function App() {
-	const texts = ['text1', 'text2', 'text3', 
-		'text4']; 
-	const [value, setValue] = useState('');
-	
-	const options = texts.map((text, index) => {
-		return <option key={index} value={index}>
-			{text}</option>; 
-	});
-	
-	return <div>
-		<select value={value} onChange={event => setValue(event.target.value)}> 
-			{options}
-		</select>
-		<p>
-			ваш выбор: {texts[value]}
-		</p>
-	</div>;
+  const [valueSum, setValueSum] = useState(""); 
+  const [valueTip, setValueTip] = useState(""); 
+
+  function handleSum(e) {
+    setValueSum(e.target.value);
+  }
+
+  function handleTip(e) {
+    setValueTip(e.target.value);
+  }
+
+  const sum_check = parseFloat(valueSum) || 0;
+  const tip = parseFloat(valueTip) || 0;
+
+
+  const res_tip = (sum_check * tip) / 100;
+  const res1 = sum_check + res_tip;
+
+  return (
+    <div>
+      <h1>Калькулятор Чаевых</h1>
+      <div>
+        <span>Введите сумму чека:</span>
+        <input
+          type="number"
+          value={valueSum}
+          onChange={handleSum}
+          placeholder="Введите сумму чека"
+        />
+      </div>
+      <div>
+        <span>Введите процент чаевых:</span>
+        <input
+          type="number"
+          value={valueTip}
+          onChange={handleTip}
+          placeholder="Введите процент"
+        />
+      </div>
+      <div>
+        <h3>Чаевые: {res_tip}</h3>
+        <h2>Итоговая сумма: {res1}</h2>
+      </div>
+    </div>
+  );
 }
 
 export default App;
-
