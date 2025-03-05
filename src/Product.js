@@ -4,7 +4,7 @@ function Product({ name, cost }) {
   return (
     <div>
       <p>
-        {name}: {cost}
+        <strong>{name}</strong>: {cost} руб.
       </p>
     </div>
   );
