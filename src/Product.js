@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function Product() {
-	return <div>
-        <p>
-		    product
-	    </p>
+function Product({ name, cost }) {
+  return (
+    <div>
+      <p>
+        {name}: {cost}
+      </p>
     </div>
+  );
 }
 
 export default Product;
