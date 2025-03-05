@@ -3,15 +3,8 @@ import React from 'react';
 function Product() {
 	return <div>
         <p>
-		    Elnur
+		    product
 	    </p>
-        <p>
-            Abiltarov
-        </p>
-        <p>
-            Serverovich
-        </p>
-        
     </div>
 }
 
