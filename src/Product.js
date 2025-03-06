@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 
 function Product({ id, name, cost, 
-	inCart }) { 
-
-    const [ban, setBan] = useState(false);
-
+	isEdit, toggleMode, editProd }) { 
 	return <div>
-		name: <span>{name}</span>,
-		cost: <span>{cost}</span>,
-        <button
-        onClick={() => setBan(!ban)}
-        >
-        {ban ? "Разбанить" : "Забанить"}
-        </button>
+		name: {
+			isEdit
+			? <input value={name} onChange={event => editProd(id, 'name', event)} /> 
+			: <span>{ name }</span>
+		}
+		cost: {
+			isEdit
+			? <input value={cost} onChange={event => editProd(id, 'cost', event)} /> 
+			: <span>{ cost }</span>
+		}
 		
+		<button onClick={() => toggleMode(id)}>
+			{isEdit ? 'save': 'edit'}
+		</button>
 	</div>;
 }
 

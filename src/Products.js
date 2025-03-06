@@ -3,37 +3,43 @@ import uuid from "react-uuid";
 import Product from "./Product";
 
 function Products() {
-  const initProds = [
-    { id: uuid(), name: "po1", cost: "123" },
-    { id: uuid(), name: "po2", cost: "12343433" },
-  ];
-
-  const [prods, setProds] = useState(initProds);
-
-  function addToCart(id) {
-    setProds(prods.map(prod => {
-        if (prod.id === id) {
-            prod.inCart = true;
-        }
-        
-        return prod;
-    }));
-}
-
-const items = prods.map(prod => {
-    return <Product
-        key      ={prod.id}
-        id       ={prod.id}
-        name     ={prod.name}
-        cost     ={prod.cost}
-        inCart   ={prod.inCart}
-        addToCart={addToCart}
-    />;
-});
-
-return <div>
-    {items}
-</div>;
+	const [prods, setProds] = useState(initProds);
+	
+	function toggleMode(id) {
+		setProds(prods.map(prod => {
+			if (prod.id === id) {
+				prod.isEdit = !prod.isEdit;
+			}
+			
+			return prod;
+		}));
+	}
+	
+	function editProd(id, field, event) {
+		setProds(prods.map(prod => {
+			if (prod.id === id) {
+				prod[field] = event.target.value;
+			}
+			
+			return prod;
+		}));
+	}
+	
+	const result = prods.map(prod => {
+		return <Product
+			key ={prod.id}
+			id  ={prod.id}
+			name={prod.name}
+			cost={prod.cost}
+			isEdit={prod.isEdit}
+			toggleMode={toggleMode}
+			editProd={editProd}
+		/>;
+	});
+	
+	return <div>
+		{result}
+	</div>;
 }
 
 export default Products;
