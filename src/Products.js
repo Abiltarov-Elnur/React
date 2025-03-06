@@ -5,17 +5,7 @@ import Product from "./Product";
 function Products() {
 	const [prods, setProds] = useState(initProds);
 	
-	function toggleMode(id) {
-		setProds(prods.map(prod => {
-			if (prod.id === id) {
-				prod.isEdit = !prod.isEdit;
-			}
-			
-			return prod;
-		}));
-	}
-	
-	function editProd(id, field, event) {
+	function changeField(id, field, event) {
 		setProds(prods.map(prod => {
 			if (prod.id === id) {
 				prod[field] = event.target.value;
@@ -25,20 +15,23 @@ function Products() {
 		}));
 	}
 	
-	const result = prods.map(prod => {
+	const rows = prods.map(prod => {
 		return <Product
 			key ={prod.id}
 			id  ={prod.id}
 			name={prod.name}
 			cost={prod.cost}
-			isEdit={prod.isEdit}
-			toggleMode={toggleMode}
-			editProd={editProd}
+			catg={prod.catg}
+			changeField={changeField}
 		/>;
 	});
 	
 	return <div>
-		{result}
+		<table>
+			<tbody>
+				{rows}
+			</tbody>
+		</table>
 	</div>;
 }
 
