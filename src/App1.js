@@ -11,20 +11,23 @@ const Container = styled.div`
 	width: 150px;
 `;
 
-const Input = styled.input`
-	background: ${(props) => (props.first ? 'yellow' : 'green')};
-
-	margin: 5px;
+const Button = styled.input`
+	background-color: orange;
 	font-size: 18px;
+	margin: 5px;
+`;
+
+const MdButton = styled(Button)`
+	color: white;
+	background-color: green;
 `;
 
 function App() {
 	return (
 		<Container>
-	        <Input first />
-	        <Input placeholder="name" type="text" />
-	        <Input type="password" />
-        </Container>
+			<Button>btn0</Button>
+			<MdButton>btn1</MdButton>
+		</Container>
 	);
 }
 
