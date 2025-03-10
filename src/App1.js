@@ -5,36 +5,23 @@ import Verdict from "./Verdict";
 import { styles } from "./styles";		
 import styled from 'styled-components';
 
-
 const Container = styled.div`
-	width: 200px;
-	border: 2px solid brown;
-	padding: 10px;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	width: 150px;
 `;
 
-const Text1 = styled.p`
-	color: orangered;
-	font-weight: bold;
-`;
-
-const Text2 = styled.p`
-	font-style: Bold;
-	color: brown;
-`;
-
-const Text3 = styled.p`
-	background-color: orange;
-	font-weight: bold;
-	color: white;
+const Input = styled.input`
+	margin: 5px;
+	font-size: 18px;
 `;
 
 function App() {
 	return (
 		<Container>
-			<Text1>text</Text1>
-			<Text2>text</Text2>
-			<Text3>text</Text3>
+			<Input />
+			<Input placeholder="name" type="text" />
+			<Input type="password" />
 		</Container>
 	);
 }
