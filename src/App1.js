@@ -12,6 +12,8 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
+	background: ${(props) => (props.first ? 'yellow' : 'green')};
+
 	margin: 5px;
 	font-size: 18px;
 `;
@@ -19,10 +21,10 @@ const Input = styled.input`
 function App() {
 	return (
 		<Container>
-			<Input />
-			<Input placeholder="name" type="text" />
-			<Input type="password" />
-		</Container>
+	        <Input first />
+	        <Input placeholder="name" type="text" />
+	        <Input type="password" />
+        </Container>
 	);
 }
 
